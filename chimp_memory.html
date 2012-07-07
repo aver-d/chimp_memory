@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Chimp Memory</title>
+    <meta name="description" content="" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <script src="lib/underscore-min.js"></script>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/handlebars.js"></script>
+    <script src="src/chimp_memory.js"></script>
+
+    <script id="template_sidebar" type="text/x-handlebars-template">
+    <div id="div_outcome_msg">
+    <p> You {{outcome_msg}}.<br>
+        Click new game to try again.</p>
+    </div>
+    <div>
+    <table>
+        <thead>
+            <tr>
+                <td>score</td>
+                <td width="80px" class="time_col">time</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        {{#scores}}
+            <tr class="{{last_game}}">
+                <td class="score_col">{{number}}</td>
+                <td class="time_col">{{time}}</td>
+            </tr>
+        {{/scores}}            
+        </tbody>
+    </table>
+   <!-- <p>Average score {{average_score}}</p> -->
+    </div>
+
+    </script>
+
+
+    <style type="text/css">
+    body { 
+        background-color: #404040;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    #wrapper {
+        width: 1000px;
+    }
+    #sidebar {
+        color: #fff;
+        float: right;
+        font-family: Courier, monospace;
+        width: 180px;
+    }
+    #div_outcome_msg {
+        height: 80px;
+    }
+    .time_col {
+        text-align: right;
+    }
+    .score_col {
+        text-align: center;
+    }
+    .last_game {
+        color: #f6a345;
+    }
+
+
+    </style>
+
+
+
+</head>
+<body>
+    <div id="wrapper">
+        <div id="sidebar">
+            <button id="btn_newgame" type="button">New game</button>
+            <div id="placeholder_sidebar"></div>
+        </div>
+
+        <canvas id="canvas_circles" width="800" height="600">
+            HTML canvas unsupported.
+        </canvas>
+
+    </div>
+    <audio id="snd_correct" src="res/correct.wav"></audio>  
+    <audio id="snd_win" src="res/win.wav"></audio>  
+    <audio id="snd_lose" src="res/lose.wav"></audio>  
+</body>
+</html>
